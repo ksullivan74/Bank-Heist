@@ -12,6 +12,10 @@ namespace Heist
             Dictionary<string, Member> myTeam = new();
 
             int bankDifficulty = 100;
+            int luckValue = new Random().Next(-10, 10);
+            bankDifficulty = bankDifficulty + luckValue;
+
+
             int teamSkill = 0;
 
             do
@@ -57,6 +61,9 @@ namespace Heist
             {
                 teamSkill += member.Value.SkillLevel;
             }
+
+            Console.WriteLine($"Your team's skill: {teamSkill}");
+            Console.WriteLine($"Bank's difficulty: {bankDifficulty}");
 
             if (teamSkill > bankDifficulty)
             {
