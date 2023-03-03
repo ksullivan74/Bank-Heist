@@ -16,7 +16,6 @@ namespace Heist
             Name = name;
             SkillLevel = skillParam;
             CourageLevel = courageParam;
-
         }
     }
 }
