@@ -11,9 +11,6 @@ namespace Heist
             string teamMemberName = "";
             Dictionary<string, Member> myTeam = new();
 
-            int bankDifficulty = 100;
-            int luckValue = new Random().Next(-10, 10);
-            bankDifficulty = bankDifficulty + luckValue;
 
 
             int teamSkill = 0;
@@ -62,40 +59,38 @@ namespace Heist
                 teamSkill += member.Value.SkillLevel;
             }
 
+            Console.WriteLine($"Bank Heist Difficulty Level? 1- 100?");
+            int bankDifficulty = int.Parse(Console.ReadLine());
+            Console.WriteLine($"How many times to run the scenario?");
+            int TrialRun = int.Parse(Console.ReadLine());
             Console.WriteLine($"Your team's skill: {teamSkill}");
-            Console.WriteLine($"Bank's difficulty: {bankDifficulty}");
 
-            if (teamSkill > bankDifficulty)
+
+            int Successes = 0;
+            int Failures = 0;
+            for (int i = 1; i <= TrialRun; i++)
+
             {
-                Console.WriteLine("Success! You're ready to rob the bank.");
+                int luckValue = new Random().Next(-10, 10);
+                bankDifficulty = bankDifficulty + luckValue;
+
+                Console.WriteLine($"Bank's difficulty: {bankDifficulty}");
+
+                if (teamSkill > bankDifficulty)
+                {
+                    Console.WriteLine("Success! You're ready to rob the bank.");
+                    Successes++;
+                }
+                else
+                {
+                    Console.WriteLine("Your heist plans have been foiled. Better luck next time.");
+                    Failures++;
+                }
             }
-            else
-            {
-                Console.WriteLine("Your heist plans have been foiled. Better luck next time.");
-            }
+            Console.WriteLine($"Succeses: {Successes}");
+            Console.WriteLine($"Failures: {Failures}");
 
         }
     }
 }
 
-/*
-
-Dictionary<string, Member> member1 = new();
-
-member1.Add("taco",new Member(teamMemberName, int.Parse(teamMemberSkill), double.Parse(teamMemberCourage));
-member1.Add("taco",new Member(teamMemberName, int.Parse(teamMemberSkill), double.Parse(teamMemberCourage));
-member1.Add("taco",new Member(teamMemberName, int.Parse(teamMemberSkill), double.Parse(teamMemberCourage));
-
-
-*/
-
-/*
-                    do
-                        {
-                            // this will generate a random number as long as the number is already in the list.
-                            number = rnd.Next(0, affirmations.Count - 1);
-                        } 
-                        while (ListNumbers.Contains(number));
-                        ListNumbers.Add(number);
-                    }
-                     */
