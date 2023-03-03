@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Heist
 {
@@ -9,6 +10,9 @@ namespace Heist
         {
             string teamMemberName = "";
             Dictionary<string, Member> myTeam = new();
+
+            int bankDifficulty = 100;
+            int teamSkill = 0;
 
             do
 
@@ -44,15 +48,25 @@ namespace Heist
 
             }
 
+
             while (teamMemberName.Length > 0);
 
-            Console.WriteLine($"Your team has {myTeam.Count} members.");
+            // Console.WriteLine($"Your team has {myTeam.Count} members.");
 
             foreach (KeyValuePair<string, Member> member in myTeam)
             {
-                Console.WriteLine($"{member.Value.Name}, has a skill level of: {member.Value.SkillLevel}, and a courage level of: {member.Value.CourageLevel}");
-
+                teamSkill += member.Value.SkillLevel;
             }
+
+            if (teamSkill > bankDifficulty)
+            {
+                Console.WriteLine("Success! You're ready to rob the bank.");
+            }
+            else
+            {
+                Console.WriteLine("Your heist plans have been foiled. Better luck next time.");
+            }
+
         }
     }
 }
