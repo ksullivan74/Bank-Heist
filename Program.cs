@@ -19,7 +19,7 @@ namespace Heist
 
             {
                 Console.WriteLine("Plan Your Heist!");
-                Console.WriteLine("Enter your a team member's name:");
+                Console.WriteLine("Enter your team member's name:");
                 teamMemberName = Console.ReadLine();
                 if (teamMemberName != "")
                 {
@@ -42,17 +42,14 @@ namespace Heist
 
                     // creating the member
                     Member teamMember = new Member(teamMemberName, int.Parse(teamMemberSkill), double.Parse(teamMemberCourage));
-                    myTeam.Add(teamMemberName, teamMember);
-
                     // adding to the dictionary, w/ the string = teamMemberName,
+                    myTeam.Add(teamMemberName, teamMember);
                 }
 
             }
-
-
             while (teamMemberName.Length > 0);
 
-            // Console.WriteLine($"Your team has {myTeam.Count} members.");
+            Console.WriteLine($"Your team has {myTeam.Count} members.");
 
             foreach (KeyValuePair<string, Member> member in myTeam)
             {
